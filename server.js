@@ -9,9 +9,7 @@ const path = require("path");
 const dotenv = require("dotenv");
 dotenv.config();
 
-const OpenAI = require("openai")
-
-
+const OpenAI = require("openai");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -142,10 +140,8 @@ app.post('/api/recommendation', async (req, res) => {
         res.status(500).send({ error: "An error occurred" });
     }
 });
-
-
-  
+ 
 // Server Start
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(`Server is Activated on http://localhost:${PORT}`);
 });
