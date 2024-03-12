@@ -6,17 +6,16 @@ import ArticleText from "../Articles/ArticleText";
 import ArticleBox from "../Articles/ArticleBox";
 import Footer from "../Footer/Footer";
 import About from "../About/About";
+import FAQ from "../FAQ/Faq";
 
 function Home() {
   return (
     <div>
       <Navbar />
       <Main />
-      <About />
-      {/* <Result /> */}
-      {/* <Tester /> */}
       <ArticleText />
       <ArticleBox />
+      <FAQ />
       <Footer />
     </div>
   );

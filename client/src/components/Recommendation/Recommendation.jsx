@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { motion, AnimatePresence } from "framer-motion";
 import BookingInterface from "../BookingInterface/BookingInterface";
 import "./Recommendation.css";
 
@@ -27,9 +28,6 @@ const Recommendations = () => {
 
       const { matchedDiseases, recommendedTests } = data;
 
-      console.log("Matched diseases:", matchedDiseases);
-      console.log("Recommended tests:", recommendedTests);
-
       setMatchedDiseases(matchedDiseases);
       setRecommendedTests(recommendedTests);
       setError("");
@@ -46,13 +44,23 @@ const Recommendations = () => {
 
   return (
     <>
-      <div className="rec">
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        className="rec"
+      >
         <div className="container mx-auto p-4">
           <h1 className="text-6xl font-bold mb-4 text-center">
             Symptom Checker
           </h1>
           <form onSubmit={handleRecommendation}>
-            <div className="mb-4">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              className="mb-4"
+            >
               <label
                 htmlFor="symptoms"
                 className="block text-gray-700 font-bold mb-2"
@@ -67,34 +75,53 @@ const Recommendations = () => {
                 className="border-2 border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500 w-full"
                 placeholder="e.g., fever, cough, sore throat"
               />
-            </div>
-            <button
+            </motion.div>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ duration: 0.2 }}
               type="submit"
               className="bg-blue-600 text-white py-2 px-4 rounded-md focus:outline-none focus:shadow-outline"
             >
               Get Recommendation
-            </button>
+            </motion.button>
           </form>
 
           <div className="mt-8">
             <h2 className="text-xl font-bold mb-2">Matched Diseases:</h2>
-            <ul>
+            <AnimatePresence>
               {matchedDiseases.map((disease, index) => (
-                <li key={index}>{disease}</li>
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  {disease}
+                </motion.div>
               ))}
-            </ul>
+            </AnimatePresence>
           </div>
           <div className="mt-8">
             <h2 className="text-xl font-bold mb-2">Recommended Tests:</h2>
-            <ul>
+            <AnimatePresence>
               {recommendedTests.map((test, index) => (
-                <li key={index}>{test}</li>
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  {test}
+                </motion.div>
               ))}
-            </ul>
+            </AnimatePresence>
           </div>
         </div>
         <BookingInterface />
-      </div>
+      </motion.div>
     </>
   );
 };

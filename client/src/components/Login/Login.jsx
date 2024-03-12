@@ -4,6 +4,7 @@ import { FaGithub } from "react-icons/fa";
 import { FaGoogle } from "react-icons/fa";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const SignUpPage = () => {
   const [formData, setFormData] = useState({
@@ -34,18 +35,33 @@ const SignUpPage = () => {
       className="flex items-center justify-center h-screen"
       style={{ backgroundImage: `url(${img1})` }}
     >
-      <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-md">
+      <motion.div
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        className="bg-white rounded-lg shadow-lg p-8 w-full max-w-md"
+      >
         <div className="text-xl font-bold text-left mb-6">Nxt Gen DGNS</div>
         <h3 className="text-lg font-bold mb-2">Sign Up</h3>
         <p className="text-gray-600 mb-6">to continue to NxtGenDGNS</p>
-        <button className="bg-gray-900 text-white w-full py-2 px-4 mb-4 rounded-lg">
-          <FaGithub />
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ duration: 0.2 }}
+          className="flex items-center bg-gray-900 text-white w-full py-2 px-4 mb-4 rounded-lg"
+        >
+          <FaGithub className="mr-2" />
           Continue with Github
-        </button>
-        <button className="bg-red-600 text-white w-full py-2 px-4 mb-4 rounded-lg">
-          <FaGoogle />
+        </motion.button>
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ duration: 0.2 }}
+          className="flex items-center bg-red-600 text-white w-full py-2 px-4 mb-4 rounded-lg"
+        >
+          <FaGoogle className="mr-2" />
           Continue with Google
-        </button>
+        </motion.button>
         <div className="flex items-center justify-center w-full mb-6">
           <div className="border-t border-gray-400 w-full"></div>
           <div className="px-3 text-gray-600">or</div>
@@ -85,16 +101,21 @@ const SignUpPage = () => {
             />
           </div>
           <Link to="/recommendation">
-            <button className="bg-purple-600 text-white w-full py-2 px-4 mb-4 rounded-lg">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ duration: 0.2 }}
+              className="bg-purple-600 text-white w-full py-2 px-4 mb-4 rounded-lg"
+            >
               Continue
-            </button>
+            </motion.button>
           </Link>
         </form>
 
         <div className="text-sm text-gray-600 text-left">
           No account? Sign Up
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };
