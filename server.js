@@ -8,7 +8,6 @@ const multer  = require('multer')
 const path = require("path");
 const dotenv = require("dotenv");
 dotenv.config();
-
 const OpenAI = require("openai");
 
 const app = express();

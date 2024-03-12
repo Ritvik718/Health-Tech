@@ -1,3 +1,5 @@
+// CREATING MODEL FOR USER DATA INCLUDING NAME,EMAIL AND PASSWORD
+
 const mongoose = require("mongoose");
 
 const UserSchema = new mongoose.Schema({

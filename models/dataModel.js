@@ -1,3 +1,4 @@
+//CREATING A MODEL FOR USER DATA INCLUDING NAME , AGE, HEIGHT, WEIGHT, ETC.
 const mongoose = require("mongoose");
 
 const Data = new mongoose.Schema({
